@@ -12,13 +12,6 @@ public class connexionJPA {
 
             EntityManager em = emf.createEntityManager();
             System.out.println("EntityManager created");
-
-            em.getTransaction().begin();
-            em.getTransaction().commit();
-            System.out.println("Transaction committed");
-
-            em.close();
-            System.out.println("EntityManager closed");
         }
     }
 }
