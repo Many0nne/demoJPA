@@ -20,6 +20,14 @@ public class Livre {
     @Column(name = "auteur")
     private String auteur;
 
+    public Livre() {
+    }
+
+    public Livre(String titre, String auteur) {
+        this.titre = titre;
+        this.auteur = auteur;
+    }
+
     public String getTitre() {
         return titre;
     }
