@@ -4,6 +4,11 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
+import java.util.List;
+import java.util.ArrayList;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 
 @Entity
@@ -11,6 +16,7 @@ import jakarta.persistence.Entity;
 public class Livre {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -19,6 +25,9 @@ public class Livre {
 
     @Column(name = "auteur")
     private String auteur;
+
+    @ManyToMany(mappedBy = "livres")
+    private List<Emprunt> emprunts;
 
     public Livre() {
     }
@@ -36,11 +45,19 @@ public class Livre {
         return auteur;
     }
 
+    public List<Emprunt> getEmprunts() {
+        return emprunts;
+    }
+
     public void setTitre(String titre) {
         this.titre = titre;
     }
 
     public void setAuteur(String auteur) {
         this.auteur = auteur;
+    }
+
+    public void setEmprunts(List<Emprunt> emprunts) {
+        this.emprunts = emprunts;
     }
 }
